@@ -3,53 +3,44 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#92002F">
+<meta name="theme-color" content="#5b4b8a">
 <link rel="manifest" href="manifest.webmanifest">
-<title>宿舍巡檢紀錄 V7</title>
+<title>宿舍巡房 APP V7_13</title>
 <style>
-body{margin:0;background:#faf7f8;font-family:system-ui,"Noto Sans TC","Microsoft JhengHei",sans-serif;color:#222}
+body{margin:0;background:#f6f4f9;font-family:system-ui,"Noto Sans TC","Microsoft JhengHei",sans-serif;color:#222}
 .wrap{max-width:680px;margin:auto;padding:18px 16px 40px}
 h1{font-size:26px;margin:4px 0 6px}.subtitle{color:#777;font-size:14px;margin-bottom:14px}
 .card{background:#fff;border-radius:18px;padding:18px;margin:12px 0;box-shadow:0 2px 12px #0001}
 label{display:block;font-weight:700;margin:14px 0 8px}
-select,input{width:100%;height:52px;border:1px solid #dccbd2;border-radius:12px;padding:0 14px;font-size:18px;box-sizing:border-box;background:#fff}
-.preview{margin-top:10px;padding:12px;background:#fbf2f5;border-radius:10px;text-align:center;font-weight:700;font-size:20px;min-height:24px}
-.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
-.actions.one{grid-template-columns:1fr}
-.actions.three{grid-template-columns:repeat(3,minmax(0,1fr))}
-button{border:0;border-radius:12px;min-height:52px;font-size:16px;font-weight:700;background:#92002F;color:#fff;padding:8px 12px}
-button:disabled{opacity:.4}.secondary{background:#f1e6ea;color:#5c1f31}.danger{background:#f5e3e3;color:#8b3030}
+select,input{width:100%;height:52px;border:1px solid #d8d4df;border-radius:12px;padding:0 14px;font-size:18px;box-sizing:border-box;background:#fff}
+.preview{margin-top:10px;padding:12px;background:#f0edf7;border-radius:10px;text-align:center;font-weight:700;font-size:20px;min-height:24px}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.actions.one{grid-template-columns:1fr}
+button{border:0;border-radius:12px;min-height:52px;font-size:16px;font-weight:700;background:#5b4b8a;color:#fff;padding:8px 12px}
+button:disabled{opacity:.4}.secondary{background:#ebe8f2;color:#332b4e}.danger{background:#f5e3e3;color:#8b3030}
 .success{background:#e7f4ec;color:#176b3a}.status{margin-top:10px;color:#777;font-size:14px;line-height:1.5}
-.small{font-size:13px;color:#777;line-height:1.5}.room{border:1px solid #ead5dd;border-radius:14px;padding:12px;margin-top:10px}
-.roomhead{display:flex;justify-content:space-between;gap:8px;align-items:center}.roomtitle{font-weight:800;font-size:18px}.badge{font-size:12px;padding:4px 8px;border-radius:999px;background:#e7f4ec;color:#176b3a}
+.small{font-size:13px;color:#777;line-height:1.5}.room{border:1px solid #ddd7e5;border-radius:14px;padding:12px;margin-top:10px}
+.roomhead{display:flex;justify-content:space-between;gap:8px;align-items:center}.roomtitle{font-weight:800;font-size:18px}
+.badge{font-size:12px;padding:4px 8px;border-radius:999px;background:#e7f4ec;color:#176b3a}
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}.thumb{position:relative;border-radius:12px;overflow:hidden;background:#eee;min-width:0}
 .thumb img{width:100%;height:auto;aspect-ratio:auto;object-fit:contain;display:block}.tag{position:absolute;right:6px;top:6px;background:#208b4c;color:#fff;border-radius:999px;padding:3px 7px;font-size:12px}
 .row{display:flex;justify-content:space-between;align-items:center;gap:10px}.muted{color:#777}.hidden{display:none!important}
 .notice{background:#fff8e5;border:1px solid #f0d98c;border-radius:12px;padding:10px 12px;font-size:13px;line-height:1.5}
+.modalMask{position:fixed;inset:0;background:rgba(0,0,0,.58);display:flex;align-items:center;justify-content:center;padding:18px;box-sizing:border-box;z-index:1000}
+.modal{width:min(680px,100%);background:#fff;border-radius:18px;padding:20px;box-shadow:0 10px 40px #0005}
+.modal h2{margin:0 0 8px;font-size:24px}.modal .actions{margin-top:14px}
+.install{background:#fff;border-radius:18px;padding:18px;margin:12px 0;box-shadow:0 2px 12px #0001}
 </style>
 </head>
 <body>
 <div class="wrap">
-<h1>宿舍巡檢紀錄 <span style="font-size:14px;color:#777">V7_04</span></h1>
+<h1>宿舍巡房 APP <span style="font-size:14px;color:#777">V7_13</span></h1>
 <div class="subtitle">手機巡房版｜選宿舍 → 輸入房號／位置 → 連拍多張 → 完成這間 → 下一間</div>
 
-
-<div class="card" id="installCard">
-  <div class="row">
-    <b>📱 安裝「宿舍巡檢紀錄」APP</b>
-    <span class="muted">V7_04</span>
-  </div>
-  <div class="small" style="margin-top:8px">
-    建議第一次使用先加入手機主畫面。安裝後可直接從桌面開啟，巡房資料會留在這支手機。
-  </div>
-  <div class="actions one">
-    <button id="installApp">安裝 APP／加入主畫面</button>
-  </div>
-  <div id="installHelp" class="notice" style="margin-top:10px">
-    <b>Android：</b>使用 Chrome 開啟正式的 HTTPS 網址；若瀏覽器提供「安裝應用程式／安裝 APP」，即可按下安裝。
-    <br><b>iPhone：</b>使用 Safari 開啟正式的 HTTPS 網址 →「分享」→「加入主畫面」→ 開啟「打開為網頁 App」→「加入」。
-    <br><span class="small">目前若是直接雙擊電腦上的 index.html 測試，不能真正安裝 APP；正式安裝請使用 GitHub Pages 的 HTTPS 網址。</span>
-  </div>
+<div class="install" id="installCard">
+  <div class="row"><b>安裝 APP</b><span class="muted">V7_13</span></div>
+  <div class="small" style="margin-top:8px">第一次使用可加入手機主畫面；Android 可安裝成 APP，iPhone 可加入主畫面。</div>
+  <div class="actions one"><button id="installApp">安裝 APP／加入主畫面</button></div>
+  <div class="small" id="installStatus" style="margin-top:8px">請用正式 HTTPS 網址開啟本頁後安裝。</div>
 </div>
 
 <div class="card" id="startCard">
@@ -66,8 +57,7 @@ button:disabled{opacity:.4}.secondary{background:#f1e6ea;color:#5c1f31}.danger{b
 <input id="place" placeholder="例如：502、2樓樓梯間、1樓洗衣房">
 <div class="preview" id="preview">請輸入房號／位置</div>
 <div class="actions">
-<button id="camera">📷 拍照</button>
-<button class="secondary" id="pick">🖼️ 選照片</button>
+<button id="camera">📷 拍照</button><button class="secondary" id="pick">🖼️ 選照片</button>
 </div>
 <input id="camInput" type="file" accept="image/*" capture="environment" multiple hidden>
 <input id="fileInput" type="file" accept="image/*" multiple hidden>
@@ -85,13 +75,9 @@ button:disabled{opacity:.4}.secondary{background:#f1e6ea;color:#5c1f31}.danger{b
 
 <div class="card hidden" id="roomsCard">
 <div class="row"><b>本次已完成</b><span id="roomsCount" class="muted"></span></div>
+<div class="notice" style="margin-top:10px">完成整個宿舍的檢查、房號／位置修改也全部完成後，可按下方按鍵作為本次操作的明確終點。這不會刪任何資料；之後仍可修改既有房號／位置。</div>
 <div id="rooms"></div>
-<div id="finishAllWrap" class="hidden" style="margin-top:14px">
-  <div class="notice">房號／位置修改完成後，按下「完成全部修改」即可結束這一輪修改。之後仍可從「巡房紀錄」再次查看／修改，不會鎖定。</div>
-  <div class="actions one">
-    <button id="finishAllEdits" class="success">✅ 完成全部修改</button>
-  </div>
-</div>
+<button id="endAll" class="one" style="width:100%;margin-top:12px">✅ 我這個宿舍全部檢查過了，房號／位置修改也全部完成</button>
 </div>
 
 <div class="card hidden" id="historyCard">
@@ -106,437 +92,252 @@ const $=id=>document.getElementById(id);
 const dorm=$('dorm'),place=$('place'),preview=$('preview'),cam=$('camInput'),file=$('fileInput');
 const status=$('status'),grid=$('grid'),start=$('start'),activeCard=$('activeCard'),startCard=$('startCard');
 const currentCard=$('currentCard'),roomsCard=$('roomsCard'),rooms=$('rooms'),historyCard=$('historyCard'),history=$('history');
-const finishRoom=$('finishRoom'),endInspection=$('endInspection');
-const finishAllWrap=$('finishAllWrap'),finishAllEdits=$('finishAllEdits');
-const DB_NAME='DormInspectionDB', DB_VERSION=1, STORE='batches';
-let db, activeBatch=null, currentRoom=null;
+const finishRoom=$('finishRoom'),endInspection=$('endInspection'),endAll=$('endAll');
+const DB_NAME='DormInspectionV7_13',DB_VERSION=1,STORE='batches';
+let db=null,activeBatch=null,currentRoom=null,deferredInstallPrompt=null;
 
-function openDB(){
- return new Promise((resolve,reject)=>{
-  const r=indexedDB.open(DB_NAME,DB_VERSION);
-  r.onupgradeneeded=e=>e.target.result.createObjectStore(STORE,{keyPath:'id'});
-  r.onsuccess=e=>{db=e.target.result;resolve(db)}; r.onerror=()=>reject(r.error);
- });
-}
-function tx(mode='readonly'){return db.transaction(STORE,mode).objectStore(STORE)}
-function putBatch(b){return new Promise((res,rej)=>{const r=tx('readwrite').put(b);r.onsuccess=()=>res();r.onerror=()=>rej(r.error)})}
-function getAll(){return new Promise((res,rej)=>{const r=tx().getAll();r.onsuccess=()=>res(r.result||[]);r.onerror=()=>rej(r.error)})}
-function delBatch(id){return new Promise((res,rej)=>{const r=tx('readwrite').delete(id);r.onsuccess=()=>res();r.onerror=()=>rej(r.error)})}
-function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,8)}
-function safe(s){return s.replace(/[\\/:*?"<>|]/g,'_').trim()}
-function roomKey(d,p){return d+'|'+p.trim()}
-function makeLabel(d,p){return d+p.trim()}
-function updatePreview(){preview.textContent=place.value.trim()?makeLabel(dorm.value,place.value):'請輸入房號／位置';$('currentLabel').textContent=place.value.trim()?makeLabel(dorm.value,place.value):''}
-dorm.onchange=updatePreview; place.oninput=updatePreview;
+function openDB(){return new Promise((resolve,reject)=>{
+ const r=indexedDB.open(DB_NAME,DB_VERSION);
+ r.onupgradeneeded=e=>{if(!e.target.result.objectStoreNames.contains(STORE))e.target.result.createObjectStore(STORE,{keyPath:'id'})};
+ r.onsuccess=e=>{db=e.target.result;resolve(db)}; r.onerror=()=>reject(r.error);
+})}
+function store(mode='readonly'){return db.transaction(STORE,mode).objectStore(STORE)}
+function putBatch(b){return new Promise((res,rej)=>{const r=store('readwrite').put(b);r.onsuccess=()=>res();r.onerror=()=>rej(r.error)})}
+function getAll(){return new Promise((res,rej)=>{const r=store().getAll();r.onsuccess=()=>res(r.result||[]);r.onerror=()=>rej(r.error)})}
+function delBatch(id){return new Promise((res,rej)=>{const r=store('readwrite').delete(id);r.onsuccess=()=>res();r.onerror=()=>rej(r.error)})}
+function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,9)}
+function safe(s){return String(s).replace(/[\\/:*?"<>|]/g,'_').replace(/\s+/g,' ').trim()||'未命名'}
+function today(){const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`}
+function makeLabel(d,p){return d+String(p).trim()}
+function roomKey(d,p){return d+'|'+String(p).trim()}
+function updatePreview(){const p=place.value.trim();preview.textContent=p?makeLabel(dorm.value,p):'請輸入房號／位置';$('currentLabel').textContent=p?makeLabel(dorm.value,p):''}
+dorm.onchange=updatePreview;place.oninput=()=>{updatePreview();currentRoom=getCurrentRoom();renderCurrent()};
 
-function emptyBatch(){
- const now=new Date(), date=now.toISOString().slice(0,10);
- return {id:uid(),date,createdAt:Date.now(),dorm:dorm.value,rooms:[],ended:false};
-}
+function emptyBatch(){return {id:uid(),date:today(),createdAt:Date.now(),dorm:dorm.value,status:'active',rooms:[]}}
+
 async function startInspection(){
- activeBatch=emptyBatch(); currentRoom=null;
- finishAllWrap.classList.add('hidden');
- $('camera').disabled=false;
- $('pick').disabled=false;
- finishRoom.disabled=true;
- endInspection.disabled=false;
- activeCard.classList.remove('hidden'); currentCard.classList.remove('hidden'); roomsCard.classList.remove('hidden');
- startCard.classList.add('hidden'); $('activeTitle').textContent=activeBatch.date+' '+activeBatch.dorm;
- place.value=''; updatePreview(); renderCurrent(); renderRooms(); status.textContent='請輸入房號／位置。';
- await putBatch(activeBatch); await renderHistory();
+ activeBatch=emptyBatch();currentRoom=null;
+ startCard.classList.add('hidden');activeCard.classList.remove('hidden');currentCard.classList.remove('hidden');roomsCard.classList.remove('hidden');
+ $('activeTitle').textContent=activeBatch.date+' '+activeBatch.dorm;
+ place.value='';updatePreview();status.textContent='請輸入房號／位置。';
+ await putBatch(activeBatch);renderCurrent();renderRooms();updateCounts();await renderHistory();
+ window.scrollTo({top:0,behavior:'smooth'});
 }
 start.onclick=startInspection;
 
 function getCurrentRoom(){
- if(!activeBatch||!place.value.trim()) return null;
- const key=roomKey(activeBatch.dorm,place.value);
- return activeBatch.rooms.find(r=>r.key===key)||null;
+ if(!activeBatch||!place.value.trim())return null;
+ return activeBatch.rooms.find(r=>r.key===roomKey(activeBatch.dorm,place.value))||null;
 }
 async function ensureRoom(){
- const p=place.value.trim(); if(!p){alert('請先輸入房號／位置。');return null}
+ if(!activeBatch){alert('請先按「開始本次巡房」。');return null}
+ const p=place.value.trim();if(!p){alert('請先輸入房號／位置。');return null}
  let r=getCurrentRoom();
- if(!r){
-  r={id:uid(),key:roomKey(activeBatch.dorm,p),place:p,label:makeLabel(activeBatch.dorm,p),done:false,photos:[]};
-  activeBatch.rooms.push(r); await putBatch(activeBatch);
- }
- if(r && r.done){ r.done=false; putBatch(activeBatch); }
- currentRoom=r; return r;
+ if(!r){r={id:uid(),key:roomKey(activeBatch.dorm,p),place:p,label:makeLabel(activeBatch.dorm,p),done:false,photos:[]};activeBatch.rooms.push(r);await putBatch(activeBatch)}
+ currentRoom=r;return r;
 }
-$('camera').onclick=async()=>{
-  if(activeBatch?.ended){alert('本次巡房已結束，不能新增照片。');return;}
-  if(await ensureRoom())cam.click();
-};
-$('pick').onclick=async()=>{
-  if(activeBatch?.ended){alert('本次巡房已結束，不能新增照片。');return;}
-  if(await ensureRoom())file.click();
-};
-cam.onchange=e=>handle(e.target.files); file.onchange=e=>handle(e.target.files);
+$('camera').onclick=async()=>{const r=await ensureRoom();if(r)cam.click()};
+$('pick').onclick=async()=>{const r=await ensureRoom();if(r)file.click()};
+cam.onchange=e=>{const fs=Array.from(e.target.files||[]);handle(fs)};
+file.onchange=e=>{const fs=Array.from(e.target.files||[]);handle(fs)};
 
 async function handle(fs){
  if(!fs.length||!activeBatch)return;
- if(activeBatch.ended){alert('本次巡房已結束，不能新增照片。');return;}
- const r=await ensureRoom(); if(!r)return;
- status.textContent='正在處理照片……';
+ const r=await ensureRoom();if(!r)return;
+ status.textContent=`正在處理 ${fs.length} 張照片……`;
  for(const f of fs){
-  const st=await stamp(f,r.label);
-  const n=String(r.photos.length+1).padStart(2,'0');
-  const origName=safe(activeBatch.dorm)+'_'+safe(r.place)+'_'+n+'_原圖.jpg';
-  const stampName=safe(activeBatch.dorm)+'_'+safe(r.place)+'_'+n+'_有字.jpg';
-  r.photos.push({id:uid(),orig:f,stamp:st,origName,stampName});
+   try{
+     const st=await stamp(f,r.label);
+     const n=String(r.photos.length+1).padStart(2,'0');
+     const base=safe(activeBatch.dorm)+'_'+safe(r.place)+'_'+n+'.jpg';
+     r.photos.push({id:uid(),orig:f,stamp:st,name:base});
+   }catch(e){console.error(e);alert('有照片處理失敗，請重新選取那張照片。')}
  }
  cam.value='';file.value='';
- await putBatch(activeBatch); renderCurrent(); renderRooms(); updateCounts();
+ await putBatch(activeBatch);currentRoom=r;renderCurrent();renderRooms();updateCounts();
  status.textContent=`${r.label}：${r.photos.length} 張`;
 }
-async function stamp(f,t){
- // 依照原照片方向與比例建立畫布；不裁切、不旋轉、不拉伸。
- const im=await load(f),sc=Math.min(1,3000/Math.max(im.width,im.height)),c=document.createElement('canvas');
- c.width=Math.max(1,Math.round(im.width*sc));
- c.height=Math.max(1,Math.round(im.height*sc));
- const x=c.getContext('2d',{alpha:false});
- x.drawImage(im,0,0,c.width,c.height);
 
- // 右下角壓字。文字框若遇到非常窄的照片，會自動縮小字體，
- // 但絕不改變照片尺寸，也絕不讓文字超出照片。
- let fs=Math.max(28,Math.round(Math.min(c.width,c.height)*.055));
- const m=Math.max(12,Math.round(fs*.55));
- const px=Math.max(8,Math.round(fs*.55));
- const py=Math.max(6,Math.round(fs*.30));
- const maxBoxW=Math.max(40,c.width-m*2);
- let textWidth;
-
- x.font=`700 ${fs}px "Noto Sans TC","Microsoft JhengHei",sans-serif`;
- textWidth=x.measureText(t).width;
- let boxW=textWidth+px*2;
- if(boxW>maxBoxW){
-   fs=Math.max(12,Math.floor(fs*maxBoxW/boxW));
-   x.font=`700 ${fs}px "Noto Sans TC","Microsoft JhengHei",sans-serif`;
-   textWidth=x.measureText(t).width;
-   boxW=Math.min(maxBoxW,textWidth+px*2);
+async function loadImage(blob){
+ if('createImageBitmap' in window){
+   try{return await createImageBitmap(blob,{imageOrientation:'from-image'})}catch(e){}
  }
- const boxH=fs+py*2;
- const bx=Math.max(m,c.width-m-boxW);
- const by=Math.max(m,c.height-m-boxH);
- const radius=Math.max(4,Math.round(fs*.28));
-
- x.beginPath();
- x.roundRect(bx,by,boxW,boxH,radius);
- x.fillStyle='rgba(0,0,0,.58)';
- x.fill();
- x.fillStyle='#fff';
- x.textBaseline='top';
- x.fillText(t,bx+px,by+py);
-
- return await new Promise((resolve,reject)=>c.toBlob(b=>b?resolve(b):reject(new Error('照片輸出失敗')),'image/jpeg',.92));
+ return new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>{URL.revokeObjectURL(im.src);resolve(im)};im.onerror=reject;im.src=URL.createObjectURL(blob)})
 }
-async function load(f){
- if('createImageBitmap'in window)return createImageBitmap(f,{imageOrientation:'from-image'});
- return new Promise((r,j)=>{const i=new Image;i.onload=()=>r(i);i.onerror=j;i.src=URL.createObjectURL(f)});
+async function stamp(blob,text){
+ const im=await loadImage(blob);
+ const maxW=1600,scale=Math.min(1,maxW/im.width),w=Math.round(im.width*scale),h=Math.round(im.height*scale);
+ const c=document.createElement('canvas');c.width=w;c.height=h;const x=c.getContext('2d');
+ x.drawImage(im,0,0,w,h);
+ const fs=Math.max(28,Math.round(w*0.045));x.font=`700 ${fs}px Arial, "Noto Sans TC", sans-serif`;
+ const pad=Math.round(fs*.45),tw=x.measureText(text).width;
+ const boxW=tw+pad*2,boxH=fs+pad*1.6;
+ x.fillStyle='rgba(255,255,255,.78)';x.fillRect(w-boxW-18,h-boxH-18,boxW,boxH);
+ x.fillStyle='#7a002f';x.textBaseline='middle';x.fillText(text,w-boxW-18+pad,h-18-boxH/2+1);
+ return await new Promise(res=>c.toBlob(res,'image/jpeg',.92));
 }
 function renderCurrent(){
  grid.innerHTML='';
- const r=getCurrentRoom()||currentRoom;
- if(!r){currentCard.classList.add('hidden');finishRoom.disabled=true;return}
- currentCard.classList.remove('hidden');$('currentLabel').textContent=r.label;
- for(const p of r.photos){
-  const b=document.createElement('div');b.className='thumb';
-  const img=document.createElement('img');img.src=URL.createObjectURL(p.stamp);
-  b.appendChild(img);const tag=document.createElement('div');tag.className='tag';tag.textContent='已壓字';b.appendChild(tag);grid.appendChild(b);
- }
- finishRoom.disabled=r.photos.length===0||r.done;
+ const r=getCurrentRoom();currentRoom=r||null;
+ if(!r){finishRoom.disabled=true;return}
+ $('currentLabel').textContent=r.label;
+ finishRoom.disabled=!r.photos.length||r.done;
+ for(const p of r.photos){const t=document.createElement('div');t.className='thumb';const im=document.createElement('img');im.src=URL.createObjectURL(p.stamp);t.appendChild(im);grid.appendChild(t)}
 }
 function renderRooms(){
- if(!activeBatch){roomsCard.classList.add('hidden');return}
  rooms.innerHTML='';
+ if(!activeBatch){roomsCard.classList.add('hidden');return}
+ roomsCard.classList.remove('hidden');
  for(const r of activeBatch.rooms){
-  const box=document.createElement('div');box.className='room';
-  const head=document.createElement('div');head.className='roomhead';
-  const title=document.createElement('div');title.className='roomtitle';title.textContent=r.place;
-  const badge=document.createElement('span');badge.className='badge';badge.textContent=r.done?'已完成':`${r.photos.length} 張`;
-  head.append(title,badge);box.appendChild(head);
-  const info=document.createElement('div');info.className='small';info.textContent=`${r.label}　${r.photos.length} 張`;
-  box.appendChild(info);
-  const acts=document.createElement('div');acts.className='actions three';
-  const dl=document.createElement('button');dl.textContent='⬇️ 這間下載';dl.disabled=!r.photos.length;
-  dl.onclick=()=>downloadRoom(r);
-  acts.appendChild(dl);
-
-  const edit=document.createElement('button');edit.className='secondary';edit.textContent='✏️ 修改房號／位置';
-  edit.onclick=()=>showEditRoom(r,box);
-  acts.appendChild(edit);
-
-  if(!activeBatch.ended){
-    const go=document.createElement('button');go.className='secondary';go.textContent='繼續這間';
-    go.onclick=async()=>{
-      r.done=false;
-      await putBatch(activeBatch);
-      place.value=r.place;
-      currentRoom=r;
-      updatePreview();
-      renderCurrent();
-      renderRooms();
-      window.scrollTo({top:0,behavior:'smooth'})
-    };
-    acts.appendChild(go);
-  }
-  box.appendChild(acts);
-  rooms.appendChild(box);
+   const box=document.createElement('div');box.className='room';
+   const head=document.createElement('div');head.className='roomhead';
+   const title=document.createElement('div');title.className='roomtitle';title.textContent=r.place;
+   const badge=document.createElement('span');badge.className='badge';badge.textContent=r.done?'已完成':`${r.photos.length} 張`;
+   head.append(title,badge);box.appendChild(head);
+   const info=document.createElement('div');info.className='small';info.textContent=`${r.label}　${r.photos.length} 張`;box.appendChild(info);
+   const acts=document.createElement('div');acts.className='actions';
+   const dl=document.createElement('button');dl.textContent='⬇️ 這間下載';dl.disabled=!r.photos.length;dl.onclick=()=>downloadRoom(r);acts.appendChild(dl);
+   const edit=document.createElement('button');edit.className='secondary';edit.textContent='✏️ 修改房號／位置';edit.onclick=()=>openEdit(r);acts.appendChild(edit);
+   box.appendChild(acts);
+   const thumbs=document.createElement('div');thumbs.className='grid';
+   for(const p of r.photos){const t=document.createElement('div');t.className='thumb';const im=document.createElement('img');im.src=URL.createObjectURL(p.stamp);t.appendChild(im);thumbs.appendChild(t)}
+   box.appendChild(thumbs);rooms.appendChild(box);
  }
  $('roomsCount').textContent=`${activeBatch.rooms.length} 間`;
- if(!activeBatch.ended) finishAllWrap.classList.add('hidden');
 }
 
-async function showEditRoom(r, box){
-  const oldPlace = r.place;
-  box.innerHTML='';
+function updateCounts(){const n=activeBatch?activeBatch.rooms.reduce((s,r)=>s+r.photos.length,0):0;$('activeCount').textContent=`${activeBatch?.rooms.length||0} 間／${n} 張`}
 
-  const head=document.createElement('div');head.className='roomhead';
-  const title=document.createElement('div');title.className='roomtitle';title.textContent='修改房號／位置';
-  head.appendChild(title);box.appendChild(head);
-
-  const input=document.createElement('input');
-  input.value=r.place;
-  input.placeholder='例如：502、2樓樓梯間、1樓洗衣房';
-  input.style.marginTop='10px';
-  box.appendChild(input);
-
-  const note=document.createElement('div');
-  note.className='small';
-  note.style.marginTop='8px';
-  note.textContent='修改後請按「完成本次更改」才會正式套用。可不限次數修改。';
-  box.appendChild(note);
-
-  const acts=document.createElement('div');acts.className='actions';
-  const save=document.createElement('button');save.className='success';save.textContent='✅ 完成本次更改';
-  const cancel=document.createElement('button');cancel.className='secondary';cancel.textContent='取消';
-  acts.append(save,cancel);box.appendChild(acts);
-
-  cancel.onclick=()=>renderRooms();
-
-  save.onclick=async()=>{
-    const p=input.value.trim();
-    if(!p){alert('請輸入房號／位置。');return;}
-
-    const newKey=roomKey(activeBatch.dorm,p);
-    const duplicate=activeBatch.rooms.some(x=>x!==r && x.key===newKey);
-    if(duplicate){
-      alert('這個房號／位置已經存在，請輸入其他名稱。');
-      return;
-    }
-
-    save.disabled=true;
-    cancel.disabled=true;
-
-    const newLabel=makeLabel(activeBatch.dorm,p);
-    status.textContent='正在更新照片上的文字……';
-
-    r.place=p;
-    r.key=newKey;
-    r.label=newLabel;
-
-    for(const photo of r.photos){
-      photo.stamp=await stamp(photo.orig,r.label);
-      const n=(photo.origName.match(/_(\d+)_原圖\.jpg$/)||[])[1] || '01';
-      photo.origName=safe(activeBatch.dorm)+'_'+safe(r.place)+'_'+n+'_原圖.jpg';
-      photo.stampName=safe(activeBatch.dorm)+'_'+safe(r.place)+'_'+n+'_有字.jpg';
-    }
-
-    await putBatch(activeBatch);
-
-    if(currentRoom===r){
-      currentRoom=r;
-      place.value=r.place;
-      updatePreview();
-    }
-
-    renderCurrent();
-    renderRooms();
-    await renderHistory();
-    status.textContent=`已完成修改：${r.label}`;
-  };
-}
-
-function updateCounts(){
- const n=activeBatch?activeBatch.rooms.reduce((s,r)=>s+r.photos.length,0):0;
- $('activeCount').textContent=`${activeBatch?.rooms.length||0} 間／${n} 張`;
-}
-place.addEventListener('input',()=>{currentRoom=getCurrentRoom();renderCurrent();});
 finishRoom.onclick=async()=>{
- const r=getCurrentRoom(); if(!r||!r.photos.length)return;
- r.done=true; currentRoom=null; place.value=''; updatePreview(); await putBatch(activeBatch);
- renderCurrent();renderRooms();updateCounts();status.textContent=`已完成 ${r.label}，可以輸入下一間。`;
+ const r=getCurrentRoom();if(!r||!r.photos.length)return;
+ r.done=true;currentRoom=null;place.value='';updatePreview();await putBatch(activeBatch);renderCurrent();renderRooms();updateCounts();status.textContent=`已完成 ${r.label}，可以輸入下一間。`;
 };
 
-endInspection.onclick=async()=>{
+function openEdit(r){
+ const mask=document.createElement('div');mask.className='modalMask';
+ const modal=document.createElement('div');modal.className='modal';
+ const h=document.createElement('h2');h.textContent='✏️ 修改房號／位置';
+ const p=document.createElement('div');p.className='small';p.textContent=`目前名稱：「${r.label}」｜修改後會重新產生壓字照片與下載檔名；原始照片不會改變。`;
+ const lab=document.createElement('label');lab.textContent='新的房號／位置';
+ const inp=document.createElement('input');inp.value=r.place;inp.id='editPlaceInput';
+ const acts=document.createElement('div');acts.className='actions';
+ const ok=document.createElement('button');ok.textContent='✅ 完成本次更改';
+ const cancel=document.createElement('button');cancel.className='secondary';cancel.textContent='取消';
+ acts.append(ok,cancel);modal.append(h,p,lab,inp,acts);mask.append(modal);document.body.append(mask);
+ setTimeout(()=>{inp.focus();inp.select()},0);
+ cancel.onclick=()=>mask.remove();
+ mask.addEventListener('click',e=>{if(e.target===mask)mask.remove()});
+ ok.onclick=async()=>{
+   const np=inp.value.trim();if(!np){alert('請輸入新的房號／位置。');return}
+   const oldKey=r.key;
+   if(np!==r.place && activeBatch.rooms.some(x=>x!==r && x.place===np)){alert('這個房號／位置已經存在，請換一個。');return}
+   ok.disabled=true;ok.textContent='正在更新……';
+   r.place=np;r.label=makeLabel(activeBatch.dorm,np);r.key=roomKey(activeBatch.dorm,np);
+   for(const ph of r.photos){ph.stamp=await stamp(ph.orig,r.label);ph.name=safe(activeBatch.dorm)+'_'+safe(r.place)+'_'+ph.name.split('_').pop()}
+   if(currentRoom?.id===r.id)currentRoom=r;
+   if(place.value===String(oldKey).split('|').slice(1).join('|')){place.value=np;updatePreview()}
+   await putBatch(activeBatch);mask.remove();renderCurrent();renderRooms();updateCounts();await renderHistory();
+ };
+}
+
+async function finishWholeInspection(){
  if(!activeBatch)return;
  const incomplete=activeBatch.rooms.some(r=>!r.done);
- if(incomplete && !confirm('還有房間尚未按「完成這間」。確定要結束本次巡房嗎？'))return;
- activeBatch.ended=true;
- await putBatch(activeBatch);
- activeBatch=null;currentRoom=null;
- finishAllWrap.classList.add('hidden');
- activeCard.classList.add('hidden');currentCard.classList.add('hidden');roomsCard.classList.add('hidden');startCard.classList.remove('hidden');
- place.value='';updatePreview();status.textContent='目前沒有進行中的巡房。';await renderHistory();
-};
+ if(incomplete){alert('還有房間尚未按「完成這間」，請先完成所有房間。');return}
+ activeBatch.status='ended';activeBatch.endedAt=Date.now();await putBatch(activeBatch);
+ activeBatch=null;currentRoom=null;activeCard.classList.add('hidden');currentCard.classList.add('hidden');roomsCard.classList.add('hidden');startCard.classList.remove('hidden');
+ place.value='';updatePreview();status.textContent='目前沒有進行中的巡房。';await renderHistory();window.scrollTo({top:0,behavior:'smooth'});
+}
+endAll.onclick=finishWholeInspection;
+endInspection.onclick=async()=>{if(activeBatch)await finishWholeInspection()};
 
-async function downloadRoom(r){
- await makeZip([r],safe(r.label)+'.zip');
-}
-async function downloadBatch(b){
- const rooms=b.rooms.filter(r=>r.photos.length);
- if(rooms.length)await makeZip(rooms,safe(b.dorm)+'_'+b.date+'_巡房.zip');
-}
+async function downloadRoom(r){await makeZip([r],safe(activeBatch?.dorm||r.label.replace(r.place,''))+'_'+today()+'_巡房.zip')}
+async function downloadBatch(b){const rs=b.rooms.filter(r=>r.photos.length);if(rs.length)await makeZip(rs,safe(b.dorm)+'_'+b.date+'_巡房.zip')}
+
 function U(s){return new TextEncoder().encode(s)}
-function L16(n){return new Uint8Array([n&255,n>>8&255])}
-function L32(n){return new Uint8Array([n&255,n>>8&255,n>>16&255,n>>24&255])}
+function L16(n){return new Uint8Array([n&255,(n>>>8)&255])}
+function L32(n){return new Uint8Array([n&255,(n>>>8)&255,(n>>>16)&255,(n>>>24)&255])}
 function cat(){const a=[...arguments],n=a.reduce((s,x)=>s+x.length,0),o=new Uint8Array(n);let p=0;for(const x of a){o.set(x,p);p+=x.length}return o}
-function crc32(a){let c=~0;for(const v of a){c^=v;for(let k=0;k<8;k++)c=c>>>1^(c&1?0xEDB88320:0)}return(~c)>>>0}
+function crc32(a){let c=~0;for(const v of a){c^=v;for(let k=0;k<8;k++)c=(c>>>1)^((c&1)?0xEDB88320:0)}return (~c)>>>0}
+
 async function makeZip(rs,fn){
- status.textContent='正在製作 ZIP……';const loc=[],cen=[];let off=0,count=0;
+ status.textContent='正在製作 ZIP……';
+ const loc=[],cen=[];let off=0,count=0;
  for(const r of rs){
-  for(const p of r.photos){
-   for(const q of [
-    {path:`沒字/${p.origName}`,blob:p.orig},
-    {path:`有字/${p.stampName}`,blob:p.stamp}
-   ]){
-    const d=new Uint8Array(await q.blob.arrayBuffer()),n=U(q.path),c=crc32(d);
-    const h=cat(U('PK\x03\x04'),L16(20),L16(0x0800),L16(0),L16(0),L16(0),L32(c),L32(d.length),L32(d.length),L16(n.length),L16(0),n);
-    loc.push(cat(h,d));
-    cen.push(cat(U('PK\x01\x02'),L16(20),L16(20),L16(0x0800),L16(0),L16(0),L16(0),L32(c),L32(d.length),L32(d.length),L16(n.length),L16(0),L16(0),L16(0),L16(0),L32(0),L32(off),n));
-    off+=h.length+d.length;count++;
+   for(const p of r.photos){
+     for(const q of [{path:`有字/${p.name}`,blob:p.stamp},{path:`沒字/${p.name}`,blob:p.orig}]){
+       const d=new Uint8Array(await q.blob.arrayBuffer()),n=U(q.path),c=crc32(d),flags=0x0800;
+       const h=cat(U('PK\x03\x04'),L16(20),L16(flags),L16(0),L16(0),L16(0),L32(c),L32(d.length),L32(d.length),L16(n.length),L16(0),n);
+       loc.push(cat(h,d));
+       cen.push(cat(U('PK\x01\x02'),L16(20),L16(20),L16(flags),L16(0),L16(0),L16(0),L32(c),L32(d.length),L32(d.length),L16(n.length),L16(0),L16(0),L16(0),L16(0),L32(0),L32(off),n));
+       off+=h.length+d.length;count++;
+     }
    }
-  }
  }
  const body=cat(...loc),cd=cat(...cen),end=cat(U('PK\x05\x06'),L16(0),L16(0),L16(count),L16(count),L32(cd.length),L32(body.length),L16(0));
  const blob=new Blob([body,cd,end],{type:'application/zip'}),u=URL.createObjectURL(blob),a=document.createElement('a');
- a.href=u;a.download=fn;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),5000);
+ a.href=u;a.download=fn;a.style.display='none';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),5000);
  status.textContent=`已下載：${fn}`;
 }
-
-
-async function finishAllEditsMode(){
-  if(!activeBatch) return;
-
-  // 這只是結束「這一輪修改模式」，不會鎖定資料，也不會刪除任何照片。
-  await putBatch(activeBatch);
-
-  activeBatch=null;
-  currentRoom=null;
-  place.value='';
-  updatePreview();
-
-  activeCard.classList.add('hidden');
-  currentCard.classList.add('hidden');
-  roomsCard.classList.add('hidden');
-  startCard.classList.remove('hidden');
-
-  $('camera').disabled=false;
-  $('pick').disabled=false;
-  finishRoom.disabled=true;
-  endInspection.disabled=false;
-
-  status.textContent='已完成這一輪修改；之後仍可從「巡房紀錄」再次查看／修改。';
-  await renderHistory();
-  window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'});
-}
-finishAllEdits.onclick=finishAllEditsMode;
 
 async function renderHistory(){
  const bs=await getAll();bs.sort((a,b)=>b.createdAt-a.createdAt);history.innerHTML='';
  if(!bs.length){history.innerHTML='<div class="small" style="margin-top:10px">目前沒有已保存的巡房紀錄。</div>';historyCard.classList.remove('hidden');return}
  historyCard.classList.remove('hidden');
  for(const b of bs){
-  const box=document.createElement('div');box.className='room';
-  const title=document.createElement('div');title.className='roomtitle';title.textContent=`${b.date} ${b.dorm}`;
-  const total=b.rooms.reduce((s,r)=>s+r.photos.length,0);
-  const info=document.createElement('div');info.className='small';info.textContent=`${b.rooms.length} 間／${total} 張照片`;
-  box.append(title,info);
-  const acts=document.createElement('div');acts.className='actions three';
-
-  const dl=document.createElement('button');dl.textContent='⬇️ 全部下載';dl.disabled=!total;dl.onclick=()=>downloadBatch(b);
-  acts.appendChild(dl);
-
-  const editAll=document.createElement('button');editAll.className='secondary';editAll.textContent='✏️ 查看／修改';
-  editAll.onclick=async()=>{
-    activeBatch=b;
-    activeBatch.ended=true;
-    currentRoom=null;
-    startCard.classList.add('hidden');
-    activeCard.classList.remove('hidden');
-    currentCard.classList.add('hidden');
-    roomsCard.classList.remove('hidden');
-    $('activeTitle').textContent=b.date+' '+b.dorm+'（已結束）';
-    $('activeCount').textContent=`${b.rooms.length} 間／${total} 張`;
-    place.value='';
-    updatePreview();
-    $('camera').disabled=true;
-    $('pick').disabled=true;
-    finishRoom.disabled=true;
-    endInspection.disabled=true;
-    status.textContent='本次巡房已結束；可以修改既有房號／位置。修改後請按「完成本次更改」才會正式儲存；不能新增照片。';
-    finishAllWrap.classList.remove('hidden');
-    renderRooms();
-    window.scrollTo({top:0,behavior:'smooth'});
-  };
-  acts.appendChild(editAll);
-
-  const del=document.createElement('button');del.className='danger';del.textContent='刪除此巡房';
-  del.onclick=async()=>{if(confirm(`確定刪除「${b.date} ${b.dorm}」這次巡房嗎？刪除後無法從 APP 恢復。`)){await delBatch(b.id);if(activeBatch?.id===b.id){activeBatch=null;location.reload()}else await renderHistory()}};
-  acts.appendChild(del);
-
-  box.appendChild(acts);history.appendChild(box);
+   const box=document.createElement('div');box.className='room';
+   const title=document.createElement('div');title.className='roomtitle';title.textContent=`${b.date} ${b.dorm}`;
+   const total=b.rooms.reduce((s,r)=>s+r.photos.length,0);const info=document.createElement('div');info.className='small';info.textContent=`${b.rooms.length} 間／${total} 張照片${b.status==='ended'?'　已結束':''}`;box.append(title,info);
+   const acts=document.createElement('div');acts.className='actions';
+   const dl=document.createElement('button');dl.textContent='⬇️ 全部下載';dl.disabled=!total;dl.onclick=()=>downloadBatch(b);
+   const del=document.createElement('button');del.className='danger';del.textContent='刪除此巡房';
+   del.onclick=async()=>{if(confirm(`確定刪除「${b.date} ${b.dorm}」這次巡房嗎？刪除後無法從 APP 恢復。`)){await delBatch(b.id);await renderHistory()}};
+   acts.append(dl,del);box.append(acts);
+   const list=document.createElement('div');list.className='small';list.style.marginTop='10px';
+   for(const r of b.rooms){
+      const line=document.createElement('div');line.style.marginTop='5px';
+      const eb=document.createElement('button');eb.textContent=`✏️ 修改「${r.place}」`;eb.className='secondary';eb.style.minHeight='42px';eb.onclick=()=>openHistoryEdit(b,r);
+      line.appendChild(eb);list.appendChild(line);
+   }
+   box.appendChild(list);history.appendChild(box);
  }
 }
 
+function openHistoryEdit(b,r){
+ const mask=document.createElement('div');mask.className='modalMask';
+ const modal=document.createElement('div');modal.className='modal';
+ const h=document.createElement('h2');h.textContent='✏️ 修改房號／位置';
+ const p=document.createElement('div');p.className='small';p.textContent=`目前名稱：「${r.label}」｜即使本次巡房已結束，只要紀錄尚未刪除，仍可修改。`;
+ const lab=document.createElement('label');lab.textContent='新的房號／位置';
+ const inp=document.createElement('input');inp.value=r.place;
+ const acts=document.createElement('div');acts.className='actions';
+ const ok=document.createElement('button');ok.textContent='✅ 完成本次更改';
+ const cancel=document.createElement('button');cancel.className='secondary';cancel.textContent='取消';
+ acts.append(ok,cancel);modal.append(h,p,lab,inp,acts);mask.append(modal);document.body.append(mask);
+ cancel.onclick=()=>mask.remove();setTimeout(()=>{inp.focus();inp.select()},0);
+ ok.onclick=async()=>{
+   const np=inp.value.trim();if(!np){alert('請輸入新的房號／位置。');return}
+   if(np!==r.place && b.rooms.some(x=>x!==r&&x.place===np)){alert('這個房號／位置已經存在，請換一個。');return}
+   ok.disabled=true;ok.textContent='正在更新……';
+   r.place=np;r.label=makeLabel(b.dorm,np);r.key=roomKey(b.dorm,np);
+   for(const ph of r.photos){ph.stamp=await stamp(ph.orig,r.label);ph.name=safe(b.dorm)+'_'+safe(r.place)+'_'+ph.name.split('_').pop()}
+   await putBatch(b);mask.remove();await renderHistory();
+ };
+}
+
+$('installApp').onclick=async()=>{
+ if(deferredInstallPrompt){deferredInstallPrompt.prompt();await deferredInstallPrompt.userChoice;deferredInstallPrompt=null;return}
+ if(location.protocol!=='https:'){alert('目前是電腦上的本機 index.html，這裡不能真正安裝 APP。上線到 GitHub Pages 的 HTTPS 網址後，這個按鈕才會啟用正式安裝。');return}
+ alert('Android：Chrome 右上角「⋮」→「安裝應用程式」或「加到主畫面」。iPhone：Safari「分享」→「加入主畫面」。');
+};
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredInstallPrompt=e;$('installStatus').textContent='可以安裝 APP 了，請按上方「安裝 APP／加入主畫面」。'});
+window.addEventListener('appinstalled',()=>{$('installStatus').textContent='APP 已安裝，可從手機桌面開啟。'});
+if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+
 (async()=>{
  try{await openDB();await renderHistory()}
- catch(e){alert('目前瀏覽器無法使用本機資料儲存，請改用一般 Chrome／Edge／Firefox 開啟。')}
+ catch(e){console.error(e);alert('目前瀏覽器無法使用本機資料儲存，請改用一般 Chrome／Edge／Safari 開啟。')}
 })();
 </script>
-
-<script>
-let deferredInstallPrompt = null;
-const installBtn = document.getElementById('installApp');
-const installHelp = document.getElementById('installHelp');
-
-window.addEventListener('beforeinstallprompt', (e) => {
-  e.preventDefault();
-  deferredInstallPrompt = e;
-  installBtn.disabled = false;
-  installBtn.textContent = '📱 安裝 APP';
-  installHelp.innerHTML = '<b>Android：</b>現在可以直接按上面的「安裝 APP」。安裝後會出現在手機桌面。';
-});
-
-installBtn?.addEventListener('click', async () => {
-  if (deferredInstallPrompt) {
-    deferredInstallPrompt.prompt();
-    await deferredInstallPrompt.userChoice;
-    deferredInstallPrompt = null;
-    return;
-  }
-
-  const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
-  if (isIOS) {
-    alert('iPhone 安裝方式：請用 Safari 開啟本 APP → 按「分享」→「加入主畫面」。');
-  } else {
-    alert('請先用手機的 Chrome／Safari 開啟 GitHub Pages 的 HTTPS 網址，再使用瀏覽器的「安裝 APP」或「加入主畫面」。');
-  }
-});
-
-window.addEventListener('appinstalled', () => {
-  installBtn.textContent = '✓ APP 已安裝';
-  installBtn.disabled = true;
-  installHelp.innerHTML = '<b>APP 已安裝。</b>之後可直接從手機桌面開啟「宿舍巡檢紀錄」。';
-});
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js').catch(() => {});
-  });
-}
-if (navigator.storage?.persist) {
-  navigator.storage.persist().catch(() => {});
-}
-</script>
-
 </body>
 </html>
