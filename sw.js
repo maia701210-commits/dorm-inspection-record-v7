@@ -1,4 +1,4 @@
-const CACHE='dorm-v7-13';
+const CACHE='dorm-v7-14';
 const ASSETS=['./','./index.html','./manifest.webmanifest','./icon-192.png','./icon-512.png'];
 
 self.addEventListener('install', event => {
