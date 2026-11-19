@@ -306,7 +306,7 @@ $('installApp').onclick=async()=>{
 };
 window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredInstallPrompt=e});
 window.addEventListener('appinstalled',()=>{status.textContent='APP 已安裝，可從手機主畫面開啟。'});
-window.addEventListener('load',()=>{'serviceWorker'in navigator&&navigator.serviceWorker.register('./sw.js').catch(()=>{})});
+window.addEventListener('load',()=>{'serviceWorker'in navigator&&navigator.serviceWorker.register('./sw.js?rev=15').catch(()=>{})});
 (async()=>{try{await openDB();await renderHistory()}catch(e){alert('目前瀏覽器無法使用本機資料儲存，請改用一般 Chrome／Edge／Firefox 開啟。')}})();
 </script>
 </body>
